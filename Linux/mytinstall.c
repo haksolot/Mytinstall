@@ -4,11 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
+#include <errno.h>
 
 
 //This function is to clear the current terminal
 int cls(){
-	printf("\e[1;1H\e[2J");
+	//printf("\e[1;1H\e[2J");
+	system("clear");
 }
 
 int cRESET(){
@@ -40,7 +43,9 @@ char* musicFeed =" Paste the link : ";
 
 char* playlist="                                               (Playlist)\n_______________________________________________________________________________________________________________";
 
-char* playlistFeed =" Paste the link of the playlist : ";
+char* playlistFeed =" Give the name of your playlist : ";
+char* playlistFeedBis =" Paste the link of the playlist : ";
+
 
 char* custom="                                               (Custom)\n_______________________________________________________________________________________________________________";
 
@@ -64,6 +69,7 @@ char* readmeFeed ="";
 int choice;
 char ytlink[100];
 char cmd[200];
+char playlistName[10];
 
 
 int main(){
@@ -109,11 +115,32 @@ do {
 		cls();
 		break;
 	
+
+
 		case 2:
+		chdir("/home/sean64/Musique/mytinstall/Playlist");
 		cls();
 		printf("%s\n\n%s\n\n%s", ascii, playlist, playlistFeed);
-		getchar();
+		scanf("%s", playlistName);
+		DIR* dir = opendir(playlistName);
+			if (dir) {
+				printf("Playlist already exists\n");
+				break;  			/* Directory exists. */
+    		closedir(dir);}
+			else if (ENOENT == errno) {
+				mkdir(playlistName, 0700);		/* Directory does not exist. */
+			}
+		chdir(playlistName);
+		cls();
+		printf("%s\n\n%s\n\n%s", ascii, playlist, playlistFeedBis);
+		scanf("%s", ytlink);
+		strcpy(cmd, "youtube-dl -q -o '%(title)s.%(ext)s' --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail ");
+		strcat(cmd, ytlink);
+		system(cmd);
+		cls();
 		break;
+
+
 
 		case 3:
 	        cls();
