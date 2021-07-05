@@ -2,6 +2,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 //This function is to clear the current terminal
@@ -17,7 +19,7 @@ int cCYAN(){
 	printf("\033[0;36m");
 }
 
-//All the basic GUI
+//All the basic UI
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 char* ascii = "::::    ::::  :::   ::: ::::::::::: ::::::::::: ::::    :::  :::::::: ::::::::::: :::     :::        :::       \n+:+:+: :+:+:+ :+:   :+:     :+:         :+:     :+:+:   :+: :+:    :+:    :+:   :+: :+:   :+:        :+:       \n+:+ +:+:+ +:+  +:+ +:+      +:+         +:+     :+:+:+  +:+ +:+           +:+  +:+   +:+  +:+        +:+       \n+#+  +:+  +#+   +#++:       +#+         +#+     +#+ +:+ +#+ +#++:++#++    +#+ +#++:++#++: +#+        +#+       \n+#+       +#+    +#+        +#+         +#+     +#+  +#+#+#        +#+    +#+ +#+     +#+ +#+        +#+       \n#+#       #+#    #+#        #+#         #+#     #+#   #+#+# #+#    #+#    #+# #+#     #+# #+#        #+#       \n###       ###    ###        ###     ########### ###    ####  ########     ### ###     ### ########## ##########";
 
@@ -25,6 +27,8 @@ char* menu = "                                                   (Menu) \n______
 
 
 char* menuFeed =" 1 - Normal				[Download tracks one by one]\n\n 2 - Playlist				[Download entiere playlist]\n\n 3 - Custom				[Download in choosen folder]\n\n 4 - Other				[Next side of Menu]"; 
+
+char* menuQuestion = "\n Input the number option: ";
 
 char* other = "                                                   (Other) \n_______________________________________________________________________________________________________________";
 
@@ -57,8 +61,9 @@ char* readmeFeed ="";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-char choice;
-int ytlink;
+int choice;
+char ytlink[100];
+char cmd[200];
 
 
 int main(){
@@ -83,15 +88,25 @@ MENU:
 
 cls();
 cCYAN();
-printf("%s\n\n%s\n\n%s\n", ascii, menu,menuFeed);
+printf("%s\n\n%s\n\n%s\n%s", ascii, menu,menuFeed,menuQuestion);
 
 scanf("%d", &choice);
 do {
 	switch(choice){
+
+		case 0:
+		goto MENU;
+		break;
+
 		case 1:
+		chdir("/home/sean64/Musique/mytinstall/Music");
 		cls();
 		printf("%s\n\n%s\n\n%s", ascii, music, musicFeed);
-		getchar();
+		scanf("%s", ytlink);
+		strcpy(cmd, "youtube-dl -q -o '%(title)s.%(ext)s' --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail ");
+		strcat(cmd, ytlink);
+		system(cmd);
+		cls();
 		break;
 	
 		case 2:
@@ -108,7 +123,7 @@ do {
 
 		case 4:
 		cls();
-		printf("%s\n\n%s\n\n%s\n", ascii, other, otherFeed);
+		printf("%s\n\n%s\n\n%s\n%s", ascii, other, otherFeed, menuQuestion);
 		scanf("%d", &choice);
 		OTHER: do {
 			switch(choice){
