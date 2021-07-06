@@ -50,7 +50,8 @@ char* readmeFeed ="";
 
 //This function is to clear the current terminal
 int cls(){
-	system("clear");
+	printf("\033[2J\033[1;1H");
+	//system("clear");
 }
 //Colors (reset and cyan)
 int cRESET(){
@@ -75,7 +76,7 @@ char * USER = getenv("USER");
 //Directory initialization
 
 char wPATH[100] = "/home/%s/Music";
-char * PATH;
+char  PATH[100];
 sprintf(PATH, wPATH, USER);
 DIR* dir = opendir(PATH);
 			if (dir) {
@@ -138,10 +139,11 @@ do {
 		break;
 
 		case 1:
-		strcpy(wPATH, "/home/%s/Musique/mytinstall/Music");
+		cls();
+		strcpy(wPATH, "/home/%s/Music/mytinstall/Music");
 		sprintf(PATH, wPATH, USER);
 		chdir(PATH);
-		//cls();
+		cls();
 		printf("%s\n\n%s\n\n%s", ascii, music, musicFeed);
 		scanf("%s", ytlink);
 		strcpy(cmd, "youtube-dl -q -o '%(title)s.%(ext)s' --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail ");
@@ -151,10 +153,10 @@ do {
 		break;
 
 		case 2:
-		strcpy(wPATH, "/home/%s/Musique/mytinstall/Playlist");
+		strcpy(wPATH, "/home/%s/Music/mytinstall/Playlist");
 		sprintf(PATH, wPATH, USER);
 		chdir(PATH);
-		//cls();
+		cls();
 		printf("%s\n\n%s\n\n%s", ascii, playlist, playlistFeed);
 		scanf("%s", playlistName);
 		DIR* dir = opendir(playlistName);
