@@ -33,7 +33,8 @@ char* playlistFeedBis =" Paste the link of the playlist : ";
 
 char* custom="                                               (Custom)\n_______________________________________________________________________________________________________________";
 
-char* customFeed ="";
+char* customFeed =" Insert your desired Path : ";
+char* customFeedBis =" Past the link : ";
 
 char* addons="                                                (Addons)\n_______________________________________________________________________________________________________________";
 
@@ -68,6 +69,7 @@ int choice;
 char ytlink[100];
 char cmd[200];
 char playlistName[10];
+char cPATH[500];
 //
 
 int main(){
@@ -176,6 +178,29 @@ do {
 		system(cmd);
 		cls();
 		break;
+
+		case 3:
+	    cls();
+		printf("%s\n\n%s\n\n%s", ascii, custom, customFeed);
+		scanf("%s", cPATH);
+		dir = opendir(cPATH);
+			if (dir) {
+				chdir(cPATH); 
+    			closedir(dir);}
+			else if (ENOENT == errno) {
+				mkdir(cPATH, 0700);
+				chdir(cPATH);
+			}
+		cls();
+		printf("%s\n\n%s\n\n%s", ascii, custom, customFeedBis);
+		scanf("%s", ytlink);
+		strcpy(cmd, "youtube-dl -q -o '%(title)s.%(ext)s' --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail ");
+		strcat(cmd, ytlink);
+		system(cmd);
+		cls();
+		break;
+
+
 
 		default:
 		printf("ERROR             [Only use numbers and no other charachters] \n");
