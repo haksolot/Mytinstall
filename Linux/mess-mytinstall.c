@@ -73,6 +73,9 @@ char playlistName[10];
 
 
 int main(){
+
+char * USER = getenv("USER");
+
 //////////////////////////////////////////////////////////////////////////   Initialising basic directories
 struct stat st = {0};							//
 									//
