@@ -13,7 +13,7 @@ char* ascii = "::::    ::::  :::   ::: ::::::::::: ::::::::::: ::::    :::  ::::
 char* menu = "                                                   (Menu) \n_______________________________________________________________________________________________________________";
 
 
-char* menuFeed =" 1 - Normal				[Download tracks one by one]\n\n 2 - Playlist				[Download entiere playlist]\n\n 3 - Custom				[Download in choosen folder]\n\n 4 - Other				[Next side of Menu]"; 
+char* menuFeed =" 1 - Normal				[Download tracks one by one]\n\n 2 - Playlist				[Download entiere playlist]\n\n 3 - Custom				[Download in choosen folder]\n\n 4 - Browser				[Open Youtube-Music]\n\n 5 - Other				[Next side of Menu]"; 
 
 char* menuQuestion = "\n Input the number option: ";
 
@@ -34,7 +34,12 @@ char* playlistFeedBis =" Paste the link of the playlist : ";
 char* custom="                                               (Custom)\n_______________________________________________________________________________________________________________";
 
 char* customFeed =" Insert your desired Path : ";
+
 char* customFeedBis =" Past the link : ";
+
+char* browser="                                               (Browser)\n______________________________________________________________________________________________________________";
+
+char* browserFeed =" Input the choosen browser number (1-Brave or 2-Firefox) : ";
 
 char* addons="                                                (Addons)\n_______________________________________________________________________________________________________________";
 
@@ -70,6 +75,7 @@ char ytlink[100];
 char cmd[200];
 char playlistName[10];
 char cPATH[500];
+char sBrowser;
 //
 
 int main(){
@@ -140,6 +146,7 @@ do {
 		goto MENU;
 		break;
 
+//Music option
 		case 1:
 		cls();
 		strcpy(wPATH, "/home/%s/Music/mytinstall/Music");
@@ -154,6 +161,7 @@ do {
 		cls();
 		break;
 
+//Playlist option
 		case 2:
 		strcpy(wPATH, "/home/%s/Music/mytinstall/Playlist");
 		sprintf(PATH, wPATH, USER);
@@ -179,6 +187,7 @@ do {
 		cls();
 		break;
 
+//Custom option
 		case 3:
 	    cls();
 		printf("%s\n\n%s\n\n%s", ascii, custom, customFeed);
@@ -200,6 +209,29 @@ do {
 		cls();
 		break;
 
+//Browser option
+		case 4:
+		cls();
+		printf("%s\n\n%s\n\n%s", ascii, browser, browserFeed);
+		scanf("%c\n", &sBrowser);
+		do {
+			switch(sBrowser){
+				case 1:
+				system("/usr/bin/brave-browser https://music.youtube.youtube.com/");
+				break;
+
+				case 2:
+				system("firefox https://music.youtube.youtube.com/");
+				break;
+
+				default:
+				system("firefox https://music.youtube.youtube.com/");
+				break;
+			} 
+		}while (sBrowser > 0);
+		goto MENU;
+		//cls();
+		break;
 
 
 		default:
