@@ -39,7 +39,7 @@ char* customFeedBis =" Past the link : ";
 
 char* browser="                                               (Browser)\n______________________________________________________________________________________________________________";
 
-char* browserFeed =" Input the choosen browser number (1-Brave or 2-Firefox) : ";
+char* browserFeed =" Input the choosen browser first letter (b-Brave or f-Firefox) : ";
 
 char* addons="                                                (Addons)\n_______________________________________________________________________________________________________________";
 
@@ -75,7 +75,7 @@ char ytlink[100];
 char cmd[200];
 char playlistName[10];
 char cPATH[500];
-char sBrowser;
+int sBrowser;
 //
 
 int main(){
@@ -138,6 +138,7 @@ sprintf(PATH, wPATH, USER);
 MENU:
 cls();
 cCYAN();
+choice = 0;
 printf("%s\n\n%s\n\n%s\n%s", ascii, menu,menuFeed,menuQuestion);
 scanf("%d", &choice);
 do {
@@ -213,26 +214,21 @@ do {
 		case 4:
 		cls();
 		printf("%s\n\n%s\n\n%s", ascii, browser, browserFeed);
-		scanf("%c\n", &sBrowser);
-		do {
-			switch(sBrowser){
-				case 1:
-				system("/usr/bin/brave-browser https://music.youtube.youtube.com/");
-				break;
+		scanf("%lc", &sBrowser);
+		switch((char)sBrowser){
 
-				case 2:
-				system("firefox https://music.youtube.youtube.com/");
-				break;
+			case 'b':
+			system("/usr/bin/brave-browser https://music.youtube.com/ ");
+			goto MENU;
+			break;
 
-				default:
-				system("firefox https://music.youtube.youtube.com/");
-				break;
-			} 
-		}while (sBrowser > 0);
-		goto MENU;
-		//cls();
+			case 'f':
+			system("firefox https://music.youtube.com/ ");
+			goto MENU;
+			break;
+
+		}
 		break;
-
 
 		default:
 		printf("ERROR             [Only use numbers and no other charachters] \n");
