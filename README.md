@@ -1,9 +1,7 @@
 # Mytinstall
 
-The real official mytinstall project
+The official Mytinstall project
 
-The main usage of this program is to basically download all wanted music directly on your system.
+The goal is to easify the way we use [Youtube-DL](https://github.com/ytdl-org/youtube-dl) to download music
 
-It helps average computer users to use sofisicated tools like youtube-dl and ffmpeg that are generally hard too install and use
-
-for non "Nerd" users.
+This tool is now easier to [install](https://github.com/Sean-64/Mytinstall-Dev/blob/main/Linux/README.md) and use !

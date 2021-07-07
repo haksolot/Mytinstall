@@ -1,9 +1,21 @@
-#Installation on Linux
+# Installation on Linux
 
-To install mytinstall on linux just the this command:
+To install mytinstall on linux just use those commands:
 
+-First clone the repo:
+'''
+git clone https://github.com/Sean-64/Mytinstall-Dev
+'''
+
+-Then cd into the Linux path of it:
+'''
+cd /Mytinstall/Linux
+'''
+
+-And finally:
+'''
 sudo ./install
-
-(some installation may require your interaction)
+'''
+(some installations may require your interaction)
 
 After that type "Mytinstall" in your terminal and enjoy ;)
