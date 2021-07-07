@@ -1,5 +1,5 @@
 # Mytinstall
-
+![mytinstall](mytinstall-thumbnail.webp)
 The official Mytinstall project
 
 The goal is to easify the way we use [Youtube-DL](https://github.com/ytdl-org/youtube-dl) to download music
