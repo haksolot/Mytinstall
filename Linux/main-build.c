@@ -166,6 +166,7 @@ do {
 		strcpy(cmd, "youtube-dl -q -o '%(title)s.%(ext)s' --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail ");
 		strcat(cmd, ytlink);
 		system(cmd);
+		system("notify-send 'Mytinstall' 'The music as been installed'");
 		cls();
 		break;
 
@@ -192,6 +193,7 @@ do {
 		strcpy(cmd, "youtube-dl -q -o '%(title)s.%(ext)s' --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail ");
 		strcat(cmd, ytlink);
 		system(cmd);
+		system("notify-send 'Mytinstall' 'The playlist as been installed'");
 		cls();
 		break;
 
@@ -214,6 +216,7 @@ do {
 		strcpy(cmd, "youtube-dl -q -o '%(title)s.%(ext)s' --format bestaudio --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail ");
 		strcat(cmd, ytlink);
 		system(cmd);
+		system("notify-send 'Mytinstall' 'The music as been installed in your path'");
 		cls();
 		break;
 
@@ -262,6 +265,7 @@ do {
 			goto OTHER;
 			break;
 
+	//README option
 			case 8:
 			cls();
 			printf("%s\n\n%s\n\n%s", ascii, readme, readmeFeed);
