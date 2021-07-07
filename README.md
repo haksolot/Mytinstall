@@ -1,5 +1,5 @@
 # Mytinstall
-![mytinstall](https://www.youtube.com/watch?v=1AJNmU2M5GU)
+[![mytinstall trailer](https://img.youtube.com/vi/1AJNmU2M5GU/0.jpg)](http://www.youtube.com/watch?v=1AJNmU2M5GU)
 
 The official Mytinstall project
 
