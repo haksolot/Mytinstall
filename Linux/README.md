@@ -9,7 +9,7 @@ git clone https://github.com/Sean-64/Mytinstall
 
 -Then cd into the Linux path of it:
 ```
-cd /Mytinstall/Linux
+cd Mytinstall/Linux
 ```
 
 -And finally:
