@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <errno.h>
 
+
 //Basic UI
 char* ascii = "::::    ::::  :::   ::: ::::::::::: ::::::::::: ::::    :::  :::::::: ::::::::::: :::     :::        :::       \n+:+:+: :+:+:+ :+:   :+:     :+:         :+:     :+:+:   :+: :+:    :+:    :+:   :+: :+:   :+:        :+:       \n+:+ +:+:+ +:+  +:+ +:+      +:+         +:+     :+:+:+  +:+ +:+           +:+  +:+   +:+  +:+        +:+       \n+#+  +:+  +#+   +#++:       +#+         +#+     +#+ +:+ +#+ +#++:++#++    +#+ +#++:++#++: +#+        +#+       \n+#+       +#+    +#+        +#+         +#+     +#+  +#+#+#        +#+    +#+ +#+     +#+ +#+        +#+       \n#+#       #+#    #+#        #+#         #+#     #+#   #+#+# #+#    #+#    #+# #+#     #+# #+#        #+#       \n###       ###    ###        ###     ########### ###    ####  ########     ### ###     ### ########## ##########";
 
@@ -19,7 +20,7 @@ char* menuQuestion = "\n Input the number option: ";
 
 char* other = "                                                   (Other) \n_______________________________________________________________________________________________________________";
 
-char* otherFeed =" 5 - Addons				[Useful fonctionalities]\n\n 6 - Settings				[Customize stuff from mytinstall]\n\n 7 - Readme!				[Just need to read this !]\n\n 8 - Back 				[Go back to menu]";
+char* otherFeed =" 6 - Addons				[Useful fonctionalities]\n\n 7 - Settings				[Customize stuff from mytinstall]\n\n 8 - Readme!				[Just need to read this !]\n\n 9 - Back 				[Go back to menu]";
 
 char* music ="                                            (Simple Download)\n_______________________________________________________________________________________________________________";
 
@@ -28,8 +29,8 @@ char* musicFeed =" Paste the link : ";
 char* playlist="                                               (Playlist)\n_______________________________________________________________________________________________________________";
 
 char* playlistFeed =" Give the name of your playlist : ";
-char* playlistFeedBis =" Paste the link of the playlist : ";
 
+char* playlistFeedBis =" Paste the link of the playlist : ";
 
 char* custom="                                               (Custom)\n_______________________________________________________________________________________________________________";
 
@@ -51,13 +52,15 @@ char* settingsFeed ="";
 
 char* readme ="                                                (README)\n_______________________________________________________________________________________________________________";
 
-char* readmeFeed ="";
+char* readmeFeed ="   This tool is principaly made of Youtube-dl and ffmpeg.\n   So the respect for this project should belong to the creators of these.\n\n   As a consequence the supported website link are:\n   - youtube.com\n   - music.youtube.com\n   - and other compatible links with youtube-dl... \n     (to find on https://ytdl-org.github.io/youtube-dl/supportedsites.html )\n\n   It is open source so you can modify it.\n   It is stored in C:/Program Files/mytinstall-files on your windows pc\n\n   The tracks downloaded are stored in C:/Users/#your-username#/Music/mytinstall\n   There are different folders like Music or Playlist inside it so you won't be messed up ;)\n\n   And finnaly it is added to the path so you can start it by the CMD (Command Prompt)\n   with the command mytinstall\n------------------------------------------------------------------------------------------";
+
+char* readmeFeedBis =" Press 'Enter' to go back : ";
 //
 
 //This function is to clear the current terminal
 int cls(){
-	printf("\033[2J\033[1;1H");
-	//system("clear");
+	//printf("\033[2J\033[1;1H");
+	system("clear");
 }
 //Colors (reset and cyan)
 int cRESET(){
@@ -69,8 +72,9 @@ int cCYAN(){
 }
 //
 
-//Utilities variable 
+//Utilities variables
 int choice;
+int otherChoice;
 char ytlink[100];
 char cmd[200];
 char playlistName[10];
@@ -79,7 +83,10 @@ int sBrowser;
 //
 
 int main(){
+
+//Usefull variables but not constant this time
 char * USER = getenv("USER");
+//
 
 //Directory initialization
 
@@ -229,6 +236,53 @@ do {
 
 		}
 		break;
+
+		case 5:
+		OTHER:
+		cls();
+		printf("%s\n\n%s\n\n%s\n%s", ascii, other,otherFeed,menuQuestion);
+		scanf("%d", &otherChoice);
+		switch(otherChoice){
+
+			case 6:
+			cls();
+			printf(" Not yet available!\n");
+			printf("\n%s", readmeFeedBis);
+			int f = getchar();
+			getchar();
+			goto OTHER;
+			break;
+
+			case 7:
+			cls();
+			printf(" Not yet available!\n");
+			printf("\n%s", readmeFeedBis);
+			int u = getchar();
+			getchar();
+			goto OTHER;
+			break;
+
+			case 8:
+			cls();
+			printf("%s\n\n%s\n\n%s", ascii, readme, readmeFeed);
+			printf("\n%s", readmeFeedBis);
+			int c = getchar();
+			getchar();
+			goto OTHER;
+			break;
+
+			case 9:
+			goto MENU;
+			break;
+
+
+
+
+
+
+		}
+		
+
 
 		default:
 		printf("ERROR             [Only use numbers and no other charachters] \n");
