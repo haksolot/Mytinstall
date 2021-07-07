@@ -14,7 +14,7 @@ cd Mytinstall/Linux
 
 -And finally:
 ```
-sudo ./install
+sudo ./installer
 ```
 (some installations may require your interaction)
 
