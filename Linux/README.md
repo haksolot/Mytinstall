@@ -13,9 +13,17 @@ cd Mytinstall/Linux
 ```
 
 -And finally:
+
+-For debian
 ```
-sudo ./installer
+sudo ./deb-installer
 ```
+
+-For arch
+```
+sudo ./arch-installer
+```
+
 (some installations may require your interaction)
 
 After that type "Mytinstall" in your terminal and enjoy ;)
